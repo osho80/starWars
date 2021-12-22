@@ -4,7 +4,7 @@ const initialState: AppState = {
   vehicles: [],
   pilots: [],
   planets: [],
-  sortedVehiclesData: null,
+  popVehicle: null,
   planetsPop: [],
 };
 
@@ -25,8 +25,8 @@ const appReducer = (state = initialState, action: any) => {
         ...state,
         planets: [...state.planets, action.planet],
       };
-    case "SET_SORTED":
-      return { ...state, sortedVehiclesData: action.popVehicle };
+    case "SET_POP_VEHICLE":
+      return { ...state, popVehicle: action.popVehicle };
     case "SET_PLANET_DISPLAY":
       return {
         ...state,

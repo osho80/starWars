@@ -16,9 +16,9 @@ export const setPlanet = (planet) => {
   };
 };
 
-export const setSorted = (popVehicle) => {
+export const setPopVehicle = (popVehicle) => {
   return (dispatch) => {
-    dispatch(_setSorted(popVehicle));
+    dispatch(_setPopVehicle(popVehicle));
   };
 };
 
@@ -40,8 +40,8 @@ const _setPlanet = (planet) => {
   return { type: "SET_PLANET", planet };
 };
 
-const _setSorted = (popVehicle) => {
-  return { type: "SET_SORTED", popVehicle };
+const _setPopVehicle = (popVehicle) => {
+  return { type: "SET_POP_VEHICLE", popVehicle };
 };
 
 const _setPlanetDisplay = (planet) => {

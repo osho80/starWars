@@ -1,12 +1,13 @@
 import { store } from "../store/store";
-import { setSorted } from "../store/actions";
+import { setPopVehicle } from "../store/actions";
+import { Vehicle, Pilot, Planet } from "../types/types";
 
 // import { planets, pilots, vehicles } from "./data";
-export const getPopVehicle = () => {
-  const state = store.getState();
-  const vehicles = state.vehicles;
-  const pilots = state.pilots;
-  const planets = state.planets;
+export const getPopVehicle = (vehicles, pilots, planets) => {
+  // const state = store.getState();
+  // const vehicles = state.vehicles;
+  // const pilots = state.pilots;
+  // const planets = state.planets;
 
   const calcAggPop = (data) => {
     const sum = data.reduce((acc, item) => {
@@ -44,5 +45,6 @@ export const getPopVehicle = () => {
   const sorted = vehiclesToComapre.sort((a, b) => {
     return b.aggPopSum - a.aggPopSum;
   });
-  store.dispatch(setSorted(sorted[0]));
+  store.dispatch(setPopVehicle(sorted[0]));
+  return sorted[0];
 };

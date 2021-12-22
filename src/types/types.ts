@@ -21,6 +21,7 @@ export type Pilot = {
 export type Planet = {
   name: string;
   population: string;
+  url: string;
 };
 
 type PopVehicle = {
@@ -32,10 +33,17 @@ type PopVehicle = {
   };
 };
 
+export type VehicleResponse = {
+  count: string;
+  next: string | null;
+  previous: string | null;
+  results: Vehicle[];
+};
+
 export interface AppState {
   vehicles: Vehicle[];
   pilots: Pilot[];
   planets: Planet[];
-  sortedVehiclesData: PopVehicle | null;
+  popVehicle: PopVehicle | null;
   planetsPop: Planet[];
 }
