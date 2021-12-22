@@ -21,16 +21,13 @@ export type Pilot = {
 export type Planet = {
   name: string;
   population: string;
-  url: string;
+  url?: string;
 };
 
-type PopVehicle = {
+export type PopVehicle = {
   name: string;
   aggPopSum: number;
-  data: {
-    pilot: string;
-    planet: Planet;
-  };
+  data: { pilot: string; planet: Planet }[];
 };
 
 export type VehicleResponse = {

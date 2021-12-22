@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Main from "./Main";
+import Main from "./pages/Main/index";
 import { init } from "./service/init";
 // init();
 

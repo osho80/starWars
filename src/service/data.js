@@ -726,3 +726,18 @@ export const planetsChartData = [
     url: "https://swapi.dev/api/planets/8/",
   },
 ];
+
+export const popVehicle = {
+  name: "Tsmeu-6 personal wheel bike",
+  aggPopSum: 4000000000,
+  data: [
+    {
+      pilot: "Grievous",
+      planet: { name: "Kalee", population: 4000000000 },
+    },
+    {
+      pilot: "Grievous",
+      planet: { name: "Kalee", population: 4000000000 },
+    },
+  ],
+};
