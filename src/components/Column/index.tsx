@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import style from "./style";
-import { PopVehicle, Planet } from "../../types/types";
+import { Planet } from "../../types/types";
 import { lightSaborSound } from "../../service/audioService";
+import { getPlanet } from "../../service/getPlanet";
+import { getColumnHeight } from "../../utils/getColumnHeight";
 
 interface Props extends WithStyles<typeof style> {
-  data: Planet;
-  height: string;
+  name: string;
 }
 
-const Column = ({ classes, height, data }: Props) => {
+const Column = ({ classes, name }: Props) => {
+  const [planet, setPlanet] = useState<null | Planet>(null);
+  const [height, setHeight] = useState<null | string>(null);
+  useEffect(() => {
+    const getPlanetData = async () => {
+      const planet = await getPlanet(name);
+      setPlanet(planet);
+    };
+    // getPlanetData();
+  }, [name]);
+  useEffect(() => {
+    if (planet) {
+      const columnHeight = getColumnHeight(parseInt(planet.population, 10));
+      setHeight(columnHeight);
+    }
+  }, [planet]);
+
   return (
-    <div className={classes.columnContainer}>
-      <p className={classes.dataField}>{data.population}</p>
-      <div className={classes.columnBottom}>
-        <div
-          className={classes.columnFill}
-          style={{ height }}
-          onMouseEnter={() => lightSaborSound.play()}
-        />
-        <p className={classes.dataField}>{data.name}</p>
+    planet && (
+      <div className={classes.columnContainer}>
+        <p className={classes.dataField}>{planet.population}</p>
+        <div className={classes.columnBottom}>
+          {height && (
+            <div
+              className={classes.columnFill}
+              style={{ height }}
+              onMouseEnter={() => lightSaborSound.play()}
+            />
+          )}
+          <p className={classes.dataField}>{planet.name}</p>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
