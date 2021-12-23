@@ -735,9 +735,5 @@ export const popVehicle = {
       pilot: "Grievous",
       planet: { name: "Kalee", population: 4000000000 },
     },
-    {
-      pilot: "Grievous",
-      planet: { name: "Kalee", population: 4000000000 },
-    },
   ],
 };

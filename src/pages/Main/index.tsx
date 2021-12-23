@@ -21,7 +21,6 @@ const Main = (props: any) => {
 
   return (
     <div>
-      <h1>Star Wars</h1>
       {popVehicle && <PopVehicleTable data={popVehicle} />}
       {/* {props.popVehicle && <PopVehicleTable data={props.popVehicle} />} */}
       {/* {props.planetsChartData.length && <Chart data={props.planetsChartData} />} */}

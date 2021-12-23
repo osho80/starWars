@@ -11,11 +11,14 @@ interface Props extends WithStyles<typeof style> {
 
 const Chart = ({ classes, data }: Props) => {
   return (
-    <div className={classes.chartContainer}>
-      {data.map((planet: any) => {
-        const columnHeight = getColumnHeight(parseInt(planet.population, 10));
-        return <Column data={planet} height={columnHeight} />;
-      })}
+    <div className={classes.mainContainer}>
+      <h3>Exercise 2</h3>
+      <div className={classes.chartContainer}>
+        {data.map((planet: any) => {
+          const columnHeight = getColumnHeight(parseInt(planet.population, 10));
+          return <Column data={planet} height={columnHeight} />;
+        })}
+      </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { createStyles, Theme } from "@material-ui/core/styles";
+import { colors } from "../../theme/index";
 
 const style = (theme: Theme) =>
   createStyles({
     columnContainer: {
-      //   position: "relative",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
@@ -11,7 +11,10 @@ const style = (theme: Theme) =>
     population: {},
     columnBottom: {},
     columnFill: {
-      backgroundColor: "pink",
+      backgroundColor: "lightgrey",
+      "&:hover": {
+        backgroundColor: colors.primary,
+      },
     },
     name: {},
   });

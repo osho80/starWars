@@ -5,7 +5,7 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
+  // TableHead,
   TableRow,
   ClickAwayListener,
   Dialog,
@@ -24,45 +24,57 @@ interface Props extends WithStyles<typeof style> {
 }
 
 const PopVehicleTable = ({ classes, data }: Props) => {
-  console.log("My PopVehicleTable data:", data);
+  // console.log("My PopVehicleTable data:", data);
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableBody>
-          <TableRow key={"first"}>
-            <TableCell component="th" scope="row">
-              {"Vehicle name with the largest sum"}
-            </TableCell>
-            <TableCell align="right">{data.name}</TableCell>
-          </TableRow>
-          <TableRow key={"second"}>
-            <TableCell component="th" scope="row">
-              {"Related home planets and their respective population"}
-            </TableCell>
-            <TableCell align="right">
-              {data.data.map((item: Item) => {
-                return (
-                  <Typography>
-                    {`${item.planet.name}, ${item.planet.population}`}
-                  </Typography>
-                );
-              })}
-            </TableCell>
-          </TableRow>
-          <TableRow key={"third"}>
-            <TableCell component="th" scope="row">
-              {"Related pilot names"}
-            </TableCell>
-            <TableCell align="right">
-              {data.data.map((item: Item) => {
-                return <Typography>{item.pilot}</Typography>;
-              })}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className={classes.tableContainer}>
+      <h3>Exercise 1</h3>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            <TableRow key={"first"} className={classes.tableRow}>
+              <TableCell component="th" scope="row">
+                {"Vehicle name with the largest sum"}
+              </TableCell>
+              <TableCell align="right">{data.name}</TableCell>
+            </TableRow>
+            <TableRow key={"second"} className={classes.tableRow}>
+              <TableCell component="th" scope="row">
+                {"Related home planets and their respective population"}
+              </TableCell>
+              <TableCell align="right">
+                {data.data.map((item: Item) => {
+                  return (
+                    <Typography>
+                      {`${item.planet.name}, ${item.planet.population}`}
+                    </Typography>
+                  );
+                })}
+              </TableCell>
+            </TableRow>
+            <TableRow key={"third"} className={classes.tableRow}>
+              <TableCell component="th" scope="row">
+                {"Related pilot names"}
+              </TableCell>
+              <TableCell>
+                {data.data.map((item: Item) => {
+                  return (
+                    <div className={classes.pilotDetails}>
+                      <Typography>{item.pilot}</Typography>
+                      <img
+                        src="../assets/images/Grievoushead.jpg"
+                        alt="Pilot Profile"
+                        className={classes.profileImage}
+                      />
+                    </div>
+                  );
+                })}
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 

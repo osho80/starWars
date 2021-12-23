@@ -1,13 +1,12 @@
 import { createStyles, Theme } from "@material-ui/core/styles";
+import { container } from "../../theme/index";
 
 const style = (theme: Theme) =>
   createStyles({
+    mainContainer: container.normal,
     chartContainer: {
       display: "flex",
-      backgroundColor: "lightgrey",
       justifyContent: "space-around",
-      width: "700px",
-      margin: "0 auto",
     },
   });
 
