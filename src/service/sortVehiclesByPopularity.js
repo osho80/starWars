@@ -3,12 +3,7 @@ import { setPopVehicle } from "../store/actions";
 import { Vehicle, Pilot, Planet } from "../types/types";
 
 // import { planets, pilots, vehicles } from "./data";
-export const getPopVehicle = (vehicles, pilots, planets) => {
-  // const state = store.getState();
-  // const vehicles = state.vehicles;
-  // const pilots = state.pilots;
-  // const planets = state.planets;
-
+export const sortVehiclesByPopularity = (vehicles, pilots, planets) => {
   const calcAggPop = (data) => {
     const sum = data.reduce((acc, item) => {
       const parsed = parseInt(item.planet.population, 10);

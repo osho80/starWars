@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import style from "./style";
-import { PopVehicle, Planet } from "../../types/types";
+import { PopularVehicle, Planet } from "../../types/types";
 import { lightSaborSound } from "../../service/audioService";
 
 interface Props extends WithStyles<typeof style> {
