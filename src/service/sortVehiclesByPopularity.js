@@ -1,6 +1,6 @@
 import { store } from "../store/store";
 import { setPopVehicle } from "../store/actions";
-import { Vehicle, Pilot, Planet } from "../types/types";
+// import { Vehicle, Pilot, Planet } from "../types/types";
 
 // import { planets, pilots, vehicles } from "./data";
 export const sortVehiclesByPopularity = (vehicles, pilots, planets) => {

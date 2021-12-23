@@ -4,7 +4,7 @@ import { setPlanetDisplay } from "../store/actions";
 import { Planet } from "../types/types";
 // import { planets } from "./data";
 
-export const getPlanetsPop = async (planets: Planet[]) => {
+export const getPlanetsPopulation = async (planets: Planet[]) => {
   // const state = store.getState();
   // const planets = state.planets;
   const required = ["Tatooine", "Alderaan", "Naboo", "Bespin", "Endor"];

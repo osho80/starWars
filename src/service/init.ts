@@ -2,7 +2,7 @@ import { getPilotedVehicles } from "./getPilotedVehicles";
 import { getRelatedPilots } from "./getRelatedPilots";
 import { getRelatedPlanets } from "./getRelatedPlanets";
 import { sortVehiclesByPopularity } from "./sortVehiclesByPopularity";
-import { getPlanetsPop } from "./getPlanetsPop";
+import { getPlanetsPopulation } from "./getPlanetsPopulation";
 
 // import { Vehicle, Pilot } from "../types/types";
 export const init = async () => {
@@ -14,6 +14,6 @@ export const init = async () => {
   console.log("Planets are set:", planets);
   const popVehicle = sortVehiclesByPopularity(vehicles, pilots, planets);
   console.log("Pop vehicle is set:", popVehicle);
-  const planetsForChart = await getPlanetsPop(planets);
+  const planetsForChart = await getPlanetsPopulation(planets);
   console.log("Planets for Chart:", planetsForChart);
 };

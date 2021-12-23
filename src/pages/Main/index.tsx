@@ -23,7 +23,7 @@ const Main = (props: any) => {
       <PopVehicleTable />
       {/* {props.planetsChartData.length && <Chart data={props.planetsChartData} />} */}
       {/* {planetsChartData.length && <Chart data={planetsChartData} />} */}
-      {/* <Chart /> */}
+      <Chart />
     </div>
   );
 };
