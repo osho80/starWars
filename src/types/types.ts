@@ -30,17 +30,8 @@ export type PopularVehicle = {
   data: { pilot: string; planet: Planet }[];
 };
 
-export type VehicleResponse = {
-  count: string;
-  next: string | null;
-  previous: string | null;
-  results: Vehicle[];
-};
-
 export interface AppState {
   vehicles: Vehicle[];
   pilots: Pilot[];
   planets: Planet[];
-  popularVehicle: PopularVehicle | null; // perhaps not needed here
-  planetsPopulation: Planet[];
 }

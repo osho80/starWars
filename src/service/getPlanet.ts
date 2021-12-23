@@ -1,8 +1,6 @@
 import Axios from "axios";
 import { store } from "../store/store";
 import { Planet } from "../types/types";
-// import { setPlanet } from "../store/actions";
-// import { planets } from "./data";
 
 export const getPlanet = async (name: string) => {
   const state = store.getState();

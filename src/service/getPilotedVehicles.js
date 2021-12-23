@@ -1,7 +1,6 @@
 import Axios from "axios";
 import { store } from "../store/store";
 import { setVehicles } from "../store/actions";
-// import { VehicleResponse } from "../types/types";
 
 const BASE_URL = "https://swapi.dev/api/";
 

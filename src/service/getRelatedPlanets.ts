@@ -2,10 +2,8 @@ import Axios from "axios";
 import { store } from "../store/store";
 import { setPlanet } from "../store/actions";
 import { Pilot } from "../types/types";
-// import { pilots } from "./data";
 
 export const getRelatedPlanets = async (pilots: Pilot[]) => {
-  // export const getRelatedPlanets = async () => {
   const getPlanetUrls = () => {
     const planetUrls: string[] = [];
     pilots.forEach((pilot) => {
