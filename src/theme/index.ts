@@ -4,7 +4,7 @@ export const colors = {
   primary: "#F6EBB3",
 };
 export const containerWidth = {
-  normal: "700px",
+  normal: "800px",
 };
 
 export const container = {

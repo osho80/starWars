@@ -8,6 +8,9 @@ const style = (theme: Theme) =>
       display: "flex",
       justifyContent: "space-around",
     },
+    title: {
+      fontFamily: '"Audiowide", sans-serif',
+    },
   });
 
 export default style;

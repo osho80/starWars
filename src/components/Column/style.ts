@@ -16,7 +16,9 @@ const style = (theme: Theme) =>
         backgroundColor: colors.primary,
       },
     },
-    name: {},
+    dataField: {
+      fontFamily: '"Days One", sans-serif',
+    },
   });
 
 export default style;

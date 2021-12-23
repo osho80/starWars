@@ -28,24 +28,26 @@ const PopVehicleTable = ({ classes, data }: Props) => {
 
   return (
     <div className={classes.tableContainer}>
-      <h3>Exercise 1</h3>
+      <h3 className={classes.title}>Exercise 1</h3>
       <TableContainer component={Paper}>
         <Table>
           <TableBody>
             <TableRow key={"first"} className={classes.tableRow}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={classes.rowText}>
                 {"Vehicle name with the largest sum"}
               </TableCell>
-              <TableCell align="right">{data.name}</TableCell>
+              <TableCell align="right" className={classes.rowText}>
+                {data.name}
+              </TableCell>
             </TableRow>
             <TableRow key={"second"} className={classes.tableRow}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={classes.rowText}>
                 {"Related home planets and their respective population"}
               </TableCell>
               <TableCell align="right">
                 {data.data.map((item: Item) => {
                   return (
-                    <Typography>
+                    <Typography className={classes.rowText}>
                       {`${item.planet.name}, ${item.planet.population}`}
                     </Typography>
                   );
@@ -53,14 +55,16 @@ const PopVehicleTable = ({ classes, data }: Props) => {
               </TableCell>
             </TableRow>
             <TableRow key={"third"} className={classes.tableRow}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={classes.rowText}>
                 {"Related pilot names"}
               </TableCell>
               <TableCell>
                 {data.data.map((item: Item) => {
                   return (
                     <div className={classes.pilotDetails}>
-                      <Typography>{item.pilot}</Typography>
+                      <Typography className={classes.rowText}>
+                        {item.pilot}
+                      </Typography>
                       <img
                         src="../assets/images/Grievoushead.jpg"
                         alt="Pilot Profile"

@@ -12,7 +12,7 @@ interface Props extends WithStyles<typeof style> {
 const Chart = ({ classes, data }: Props) => {
   return (
     <div className={classes.mainContainer}>
-      <h3>Exercise 2</h3>
+      <h3 className={classes.title}>Exercise 2</h3>
       <div className={classes.chartContainer}>
         {data.map((planet: any) => {
           const columnHeight = getColumnHeight(parseInt(planet.population, 10));

@@ -12,14 +12,14 @@ interface Props extends WithStyles<typeof style> {
 const Column = ({ classes, height, data }: Props) => {
   return (
     <div className={classes.columnContainer}>
-      <p className={classes.population}>{data.population}</p>
+      <p className={classes.dataField}>{data.population}</p>
       <div className={classes.columnBottom}>
         <div
           className={classes.columnFill}
           style={{ height }}
           onMouseEnter={() => lightSaborSound.play()}
         />
-        <p className={classes.name}>{data.name}</p>
+        <p className={classes.dataField}>{data.name}</p>
       </div>
     </div>
   );

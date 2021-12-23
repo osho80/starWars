@@ -3,10 +3,16 @@ import { colors, container } from "../../theme/index";
 const style = (theme: Theme) =>
   createStyles({
     tableContainer: container.normal,
+    title: {
+      fontFamily: '"Audiowide", sans-serif',
+    },
     tableRow: {
       "&:hover": {
         backgroundColor: colors.primary,
       },
+    },
+    rowText: {
+      fontFamily: '"Days One", sans-serif',
     },
     pilotDetails: {
       display: "flex",
