@@ -18,7 +18,7 @@ const Column = ({ classes, name }: Props) => {
       const planet = await getPlanet(name);
       setPlanet(planet);
     };
-    getPlanetData();
+    // getPlanetData();
   }, [name]);
   useEffect(() => {
     if (planet) {

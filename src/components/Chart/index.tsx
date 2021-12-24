@@ -12,7 +12,7 @@ const Chart = ({ classes }: Props) => {
       <h3 className={classes.title}>Exercise 2</h3>
       <div className={classes.chartContainer}>
         {planetNames.map((planetName: string) => {
-          return <Column name={planetName} />;
+          return <Column name={planetName} key={planetName} />;
         })}
       </div>
     </div>
