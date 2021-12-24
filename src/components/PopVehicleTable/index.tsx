@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import { getPopularVehicle } from "../../service/getPopularVehicle";
 import {
   CircularProgress,
@@ -8,23 +9,33 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  ClickAwayListener,
-  Dialog,
   Paper,
   Typography,
 } from "@material-ui/core";
 import style from "./style";
-import { PopularVehicle, Planet } from "../../types/types";
-type Item = {
-  pilot: string | null;
-  planet: Planet | null;
-};
+import {
+  PopularVehicle,
+  PilotsPlanet,
+  DetailedPilotObject,
+  DetailedPlanetObject,
+} from "../../types/types";
+import Modal from "../Modal/index";
+
 interface Props extends WithStyles<typeof style> {}
 
 const PopVehicleTable = ({ classes }: Props) => {
   const [popularVehicle, setPopularVehicle] = useState<null | PopularVehicle>(
     null
   );
+  const [open, setOpen] = useState(false);
+  const [isPilot, setIsPilot] = useState<{ isPilot: boolean }>({
+    isPilot: true,
+  });
+
+  const [details, setDetails] = useState<
+    DetailedPilotObject | DetailedPlanetObject | null
+  >(null);
+
   useEffect(() => {
     const getTableData = async () => {
       const data = await getPopularVehicle();
@@ -32,6 +43,19 @@ const PopVehicleTable = ({ classes }: Props) => {
     };
     // getTableData();
   }, []);
+
+  const handleClickOpen = (
+    details: DetailedPilotObject | DetailedPlanetObject,
+    isPilot: boolean
+  ) => {
+    setOpen(true);
+    setIsPilot({ isPilot });
+    setDetails(details);
+  };
+
+  const handleClickAway = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={classes.tableContainer}>
@@ -66,12 +90,22 @@ const PopVehicleTable = ({ classes }: Props) => {
                   {"Related home planets and their respective population"}
                 </TableCell>
                 <TableCell align="right">
-                  {popularVehicle.data.map((item: Item) => {
-                    return (
-                      <Typography className={classes.rowText}>
-                        {item.planet
-                          ? `${item.planet.name}, ${item.planet.population}`
-                          : "unknown"}
+                  {popularVehicle.data.map((item: PilotsPlanet, idx) => {
+                    const currPlanet = item.planet;
+                    return currPlanet ? (
+                      <Typography
+                        className={clsx(classes.rowText, classes.planetDetails)}
+                        key={`planet-${idx}`}
+                        onClick={() => handleClickOpen(currPlanet, false)}
+                      >
+                        {`${currPlanet.name}, ${currPlanet.population}`}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        className={classes.rowText}
+                        key={`planet-${idx}`}
+                      >
+                        unknown
                       </Typography>
                     );
                   })}
@@ -86,11 +120,16 @@ const PopVehicleTable = ({ classes }: Props) => {
                   {"Related pilot names"}
                 </TableCell>
                 <TableCell>
-                  {popularVehicle.data.map((item: Item) => {
-                    return (
-                      <div className={classes.pilotDetails}>
+                  {popularVehicle.data.map((item: PilotsPlanet, idx) => {
+                    const currPilot = item.pilot;
+                    return currPilot ? (
+                      <div
+                        className={classes.pilotDetails}
+                        key={`pilot-${idx}`}
+                        onClick={() => handleClickOpen(currPilot, true)}
+                      >
                         <Typography className={classes.rowText}>
-                          {item.pilot ? item.pilot : "unknown"}
+                          {currPilot.name}
                         </Typography>
                         <img
                           src="../assets/images/Grievoushead.jpg"
@@ -98,6 +137,13 @@ const PopVehicleTable = ({ classes }: Props) => {
                           className={classes.profileImage}
                         />
                       </div>
+                    ) : (
+                      <Typography
+                        className={classes.rowText}
+                        key={`pilot-${idx}`}
+                      >
+                        unknown
+                      </Typography>
                     );
                   })}
                 </TableCell>
@@ -106,6 +152,13 @@ const PopVehicleTable = ({ classes }: Props) => {
           </Table>
         </TableContainer>
       )}
+
+      <Modal
+        open={open}
+        handleClickAway={handleClickAway}
+        isPilot={isPilot}
+        details={details}
+      />
     </div>
   );
 };

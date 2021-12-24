@@ -1,6 +1,6 @@
-import { createStyles, Theme } from "@material-ui/core/styles";
+import { createStyles } from "@material-ui/core/styles";
 import { colors, container } from "../../theme/index";
-const style = (theme: Theme) =>
+const style = () =>
   createStyles({
     tableContainer: container.normal,
     title: {
@@ -14,10 +14,18 @@ const style = (theme: Theme) =>
     rowText: {
       fontFamily: '"Days One", sans-serif',
     },
+    planetDetails: {
+      "&:hover": {
+        cursor: "pointer",
+      },
+    },
     pilotDetails: {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-end",
+      "&:hover": {
+        cursor: "pointer",
+      },
     },
     profileImage: {
       width: "70px",

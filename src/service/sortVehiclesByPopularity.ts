@@ -1,16 +1,16 @@
-import { Vehicle, Pilot, Planet } from "../types/types";
-
-type Data = {
-  pilot: string | null;
-  planet: Planet | null;
-}[];
+import {
+  Vehicle,
+  DetailedPilotObject,
+  DetailedPlanetObject,
+  PilotsPlanet,
+} from "../types/types";
 
 export const sortVehiclesByPopularity = (
   vehicles: Vehicle[],
-  pilots: Pilot[],
-  planets: Planet[]
+  pilots: DetailedPilotObject[],
+  planets: DetailedPlanetObject[]
 ) => {
-  const calcAggPop = (data: Data) => {
+  const calcAggPop = (data: PilotsPlanet[]) => {
     const sum = data.reduce((acc, item) => {
       const parsed = item.planet ? parseInt(item.planet.population, 10) : 0;
       const isnan = isNaN(parsed);
@@ -27,10 +27,9 @@ export const sortVehiclesByPopularity = (
       const planet = !pilot
         ? null
         : planets.find((planet) => planet.url === pilot.homeworld);
-      const population = !planet ? "0" : planet.population;
       return {
-        pilot: pilot ? pilot.name : null,
-        planet: planet ? { name: planet.name, population: population } : null,
+        pilot: pilot ? pilot : null,
+        planet: planet ? planet : null,
       };
     });
     const compareObj = {
