@@ -26,7 +26,7 @@ export type Planet = {
 export type PopularVehicle = {
   name: string;
   aggPopSum: number;
-  data: { pilot: string; planet: Planet }[];
+  data: { pilot: string | null; planet: Planet | null }[];
 };
 
 export interface AppState {

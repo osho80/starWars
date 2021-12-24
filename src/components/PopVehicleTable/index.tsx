@@ -16,8 +16,8 @@ import {
 import style from "./style";
 import { PopularVehicle, Planet } from "../../types/types";
 type Item = {
-  pilot: string;
-  planet: Planet;
+  pilot: string | null;
+  planet: Planet | null;
 };
 interface Props extends WithStyles<typeof style> {}
 
@@ -30,7 +30,7 @@ const PopVehicleTable = ({ classes }: Props) => {
       const data = await getPopularVehicle();
       setPopularVehicle(data);
     };
-    getTableData();
+    // getTableData();
   }, []);
 
   return (
@@ -69,7 +69,9 @@ const PopVehicleTable = ({ classes }: Props) => {
                   {popularVehicle.data.map((item: Item) => {
                     return (
                       <Typography className={classes.rowText}>
-                        {`${item.planet.name}, ${item.planet.population}`}
+                        {item.planet
+                          ? `${item.planet.name}, ${item.planet.population}`
+                          : "unknown"}
                       </Typography>
                     );
                   })}
@@ -88,7 +90,7 @@ const PopVehicleTable = ({ classes }: Props) => {
                     return (
                       <div className={classes.pilotDetails}>
                         <Typography className={classes.rowText}>
-                          {item.pilot}
+                          {item.pilot ? item.pilot : "unknown"}
                         </Typography>
                         <img
                           src="../assets/images/Grievoushead.jpg"
