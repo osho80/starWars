@@ -15,7 +15,6 @@ export type Pilot = {
   name: string;
   homeworld: string;
   url: string;
-  id?: string;
 };
 
 export type Planet = {
