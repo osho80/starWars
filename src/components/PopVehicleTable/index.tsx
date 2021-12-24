@@ -30,7 +30,7 @@ const PopVehicleTable = ({ classes }: Props) => {
       const data = await getPopularVehicle();
       setPopularVehicle(data);
     };
-    // getTableData();
+    getTableData();
   }, []);
 
   return (
