@@ -1,5 +1,3 @@
-import { createTheme } from "@material-ui/core";
-
 export const colors = {
   primary: "#F6EBB3",
 };
@@ -16,4 +14,3 @@ export const container = {
     border: `1px solid ${colors.primary}`,
   },
 };
-const theme = createTheme({});
