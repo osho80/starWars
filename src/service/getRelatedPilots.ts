@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { store } from "../store/store";
-import { setPilot } from "../store/actions";
+import { setPilots } from "../store/actions";
 import { Vehicle } from "../types/types";
 
 export const getRelatedPilots = async (vehicles: Vehicle[]) => {
@@ -21,14 +21,15 @@ export const getRelatedPilots = async (vehicles: Vehicle[]) => {
       pilotUrls.map(async (url) => {
         try {
           const { data } = await Axios.get(url);
-          store.dispatch(setPilot(data));
           return data;
         } catch (error) {
           console.log(`Error while getting pilot url: ${url}`);
         }
       })
     );
-    return pilots.filter((pilot) => pilot !== undefined);
+    const filtered = pilots.filter((pilot) => pilot !== undefined);
+    store.dispatch(setPilots(filtered));
+    return filtered;
   };
   const pilotUrls = getPilotUrls();
   const pilots = await getPilots(pilotUrls);

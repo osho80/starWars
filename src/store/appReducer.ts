@@ -13,10 +13,15 @@ const appReducer = (state = initialState, action: any) => {
         ...state,
         vehicles: [...state.vehicles, ...action.vehicles],
       };
-    case "SET_PILOT":
+    case "SET_PILOTS":
       return {
         ...state,
-        pilots: [...state.pilots, action.pilot],
+        pilots: [...state.pilots, ...action.pilots],
+      };
+    case "SET_PLANETS":
+      return {
+        ...state,
+        planets: [...state.planets, ...action.planets],
       };
     case "SET_PLANET":
       return {
