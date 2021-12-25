@@ -17,7 +17,7 @@ export const getRelatedPilots = async (vehicles: Vehicle[]) => {
   };
 
   const getPilots = async (pilotUrls: string[]) => {
-    return Promise.all(
+    const pilots = await Promise.all(
       pilotUrls.map(async (url) => {
         try {
           const { data } = await Axios.get(url);
@@ -28,6 +28,7 @@ export const getRelatedPilots = async (vehicles: Vehicle[]) => {
         }
       })
     );
+    return pilots.filter((pilot) => pilot !== undefined);
   };
   const pilotUrls = getPilotUrls();
   const pilots = await getPilots(pilotUrls);

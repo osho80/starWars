@@ -15,7 +15,7 @@ export const getRelatedPlanets = async (pilots: Pilot[]) => {
   };
 
   const getPlanets = async (planetUrls: string[]) => {
-    return Promise.all(
+    const planets = await Promise.all(
       planetUrls.map(async (url) => {
         try {
           const { data } = await Axios.get(url);
@@ -26,6 +26,7 @@ export const getRelatedPlanets = async (pilots: Pilot[]) => {
         }
       })
     );
+    return planets.filter((planet) => planet !== undefined);
   };
   const planetUrls = getPlanetUrls();
   const planets = await getPlanets(planetUrls);
