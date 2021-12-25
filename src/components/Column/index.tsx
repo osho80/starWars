@@ -3,7 +3,7 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import style from "./style";
 import { Planet } from "../../types/types";
 import { lightSaborSound } from "../../service/audioService";
-import { getPlanet } from "../../service/getPlanet";
+import { getPlanet } from "../../service/swapiService";
 import { getColumnHeight } from "./utils/getColumnHeight";
 
 interface Props extends WithStyles<typeof style> {
