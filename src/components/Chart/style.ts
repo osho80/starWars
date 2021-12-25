@@ -1,7 +1,7 @@
-import { createStyles, Theme } from "@material-ui/core/styles";
+import { createStyles } from "@material-ui/core/styles";
 import { container } from "../../theme/index";
 
-const style = (theme: Theme) =>
+const style = () =>
   createStyles({
     mainContainer: container.normal,
     chartContainer: {
