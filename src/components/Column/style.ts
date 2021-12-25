@@ -1,7 +1,7 @@
-import { createStyles, Theme } from "@material-ui/core/styles";
+import { createStyles } from "@material-ui/core/styles";
 import { colors } from "../../theme/index";
 
-const style = (theme: Theme) =>
+const style = () =>
   createStyles({
     columnContainer: {
       display: "flex",

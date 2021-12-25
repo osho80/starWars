@@ -37,11 +37,7 @@ const PopVehicleTable = ({ classes }: Props) => {
   >(null);
 
   useEffect(() => {
-    const getTableData = async () => {
-      const data = await getPopularVehicle();
-      setPopularVehicle(data);
-    };
-    // getTableData();
+    getPopularVehicle().then(setPopularVehicle);
   }, []);
 
   const handleClickOpen = (

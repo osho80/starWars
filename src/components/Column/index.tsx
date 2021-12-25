@@ -14,11 +14,7 @@ const Column = ({ classes, name }: Props) => {
   const [planet, setPlanet] = useState<null | Planet>(null);
   const [height, setHeight] = useState<null | string>(null);
   useEffect(() => {
-    const getPlanetData = async () => {
-      const planet = await getPlanet(name);
-      setPlanet(planet);
-    };
-    // getPlanetData();
+    getPlanet(name).then(setPlanet);
   }, [name]);
   useEffect(() => {
     if (planet) {

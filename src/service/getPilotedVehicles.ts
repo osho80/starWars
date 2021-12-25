@@ -1,24 +1,21 @@
 import Axios from "axios";
 import { store } from "../store/store";
 import { setVehicles } from "../store/actions";
-
+import { Vehicle } from "../types/types";
 const BASE_URL = "https://swapi.dev/api/";
 
-const handleVehiclesRes = (data) => {
-  const filtered = data.results.filter((vehicle) => vehicle.pilots.length);
+const processVehicles = async (apiUrl: string): Promise<Vehicle[]> => {
+  const { data } = await Axios.get(apiUrl);
+  const filtered = data.results.filter(
+    (vehicle: Vehicle) => vehicle.pilots.length
+  );
   store.dispatch(setVehicles(filtered));
   if (data.next) {
     return processVehicles(data.next);
-  } else {
-    const state = store.getState();
-    const vehicles = state.vehicles;
-    return vehicles;
   }
-};
-
-const processVehicles = async (apiUrl) => {
-  const response = await Axios.get(apiUrl);
-  return handleVehiclesRes(response.data);
+  const state = store.getState();
+  const vehicles = state.vehicles;
+  return vehicles;
 };
 
 export const getPilotedVehicles = async () => {
