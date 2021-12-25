@@ -1,6 +1,8 @@
-import { getPilotedVehicles } from "./getPilotedVehicles";
-import { getRelatedPilots } from "./getRelatedPilots";
-import { getRelatedPlanets } from "./getRelatedPlanets";
+import {
+  getPilotedVehicles,
+  getRelatedPilots,
+  getRelatedPlanets,
+} from "./swapiService";
 import { sortVehiclesByPopularity } from "./sortVehiclesByPopularity";
 
 export const getPopularVehicle = async () => {
