@@ -23,7 +23,7 @@ import Modal from "../Modal/index";
 
 interface Props extends WithStyles<typeof style> {}
 
-const PopVehicleTable = ({ classes }: Props) => {
+const PopularVehicleTable = ({ classes }: Props) => {
   const [popularVehicle, setPopularVehicle] = useState<null | PopularVehicle>(
     null
   );
@@ -159,4 +159,4 @@ const PopVehicleTable = ({ classes }: Props) => {
   );
 };
 
-export default withStyles(style)(PopVehicleTable);
+export default withStyles(style)(PopularVehicleTable);
