@@ -16,7 +16,6 @@ const Modal = ({ classes, open, handleClickAway, isPilot, details }: Props) => {
   const pilot = isPilot.isPilot;
   return (
     <Dialog open={open}>
-      {console.log("detaiols:", details, "isPlot:", isPilot)}
       <ClickAwayListener onClickAway={handleClickAway}>
         {details && (
           <Card elevation={3} className={classes.cardContainer}>

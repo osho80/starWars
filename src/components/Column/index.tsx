@@ -4,7 +4,7 @@ import style from "./style";
 import { Planet } from "../../types/types";
 import { lightSaborSound } from "../../service/audioService";
 import { getPlanet } from "../../service/getPlanet";
-import { getColumnHeight } from "../../utils/getColumnHeight";
+import { getColumnHeight } from "./utils/getColumnHeight";
 
 interface Props extends WithStyles<typeof style> {
   name: string;
@@ -14,7 +14,7 @@ const Column = ({ classes, name }: Props) => {
   const [planet, setPlanet] = useState<null | Planet>(null);
   const [height, setHeight] = useState<null | string>(null);
   useEffect(() => {
-    getPlanet(name).then(setPlanet);
+    // getPlanet(name).then(setPlanet);
   }, [name]);
   useEffect(() => {
     if (planet) {
