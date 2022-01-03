@@ -20,8 +20,7 @@ const Main = ({ classes }: Props) => {
   };
 
   return (
-    <div>
-      {/* <h2 className={classes.title}>Home assignment By Oshri Hayke</h2> */}
+    <div className={classes.mainContainer}>
       <FormControl component="fieldset">
         <RadioGroup
           row
