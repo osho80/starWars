@@ -14,7 +14,7 @@ const Column = ({ classes, name }: Props) => {
   const [planet, setPlanet] = useState<null | Planet>(null);
   const [height, setHeight] = useState<null | string>(null);
   useEffect(() => {
-    // getPlanet(name).then(setPlanet);
+    getPlanet(name).then(setPlanet);
   }, [name]);
   useEffect(() => {
     if (planet) {
@@ -22,11 +22,13 @@ const Column = ({ classes, name }: Props) => {
       setHeight(columnHeight);
     }
   }, [planet]);
-
+  const populationInMillions = planet
+    ? parseInt(planet.population, 10) / 1000000
+    : 0;
   return (
     planet && (
       <div className={classes.columnContainer}>
-        <p className={classes.dataField}>{planet.population}</p>
+        <p className={classes.dataField}>{populationInMillions + " M"}</p>
         <div className={classes.columnBottom}>
           {height && (
             <div
