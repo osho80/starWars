@@ -37,7 +37,7 @@ const PopularVehicleTable = ({ classes }: Props) => {
   >(null);
 
   useEffect(() => {
-    getPopularVehicle().then(setPopularVehicle);
+    // getPopularVehicle().then(setPopularVehicle);
   }, []);
 
   const handleClickOpen = (
