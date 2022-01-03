@@ -3,6 +3,7 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import { getPopularVehicle } from "../../service/getPopularVehicle";
 import {
+  Container,
   CircularProgress,
   Table,
   TableBody,
@@ -37,7 +38,7 @@ const PopularVehicleTable = ({ classes }: Props) => {
   >(null);
 
   useEffect(() => {
-    // getPopularVehicle().then(setPopularVehicle);
+    getPopularVehicle().then(setPopularVehicle);
   }, []);
 
   const handleClickOpen = (
@@ -54,8 +55,9 @@ const PopularVehicleTable = ({ classes }: Props) => {
   };
 
   return (
-    <div className={classes.tableContainer}>
-      <h3 className={classes.title}>Exercise 1</h3>
+    // <div className={classes.tableContainer}>
+    <Container maxWidth="md" className={classes.tableContainer}>
+      {/* <h3 className={classes.title}>Exercise 1</h3> */}
       {!popularVehicle ? (
         <>
           <CircularProgress />
@@ -88,13 +90,17 @@ const PopularVehicleTable = ({ classes }: Props) => {
                 <TableCell align="right">
                   {popularVehicle.data.map((item: PilotsPlanet, idx) => {
                     const currPlanet = item.planet;
+                    const populationInMillions = currPlanet
+                      ? parseInt(currPlanet.population, 10) / 1000000
+                      : 0;
+
                     return currPlanet ? (
                       <Typography
                         className={clsx(classes.rowText, classes.planetDetails)}
                         key={`planet-${idx}`}
                         onClick={() => handleClickOpen(currPlanet, false)}
                       >
-                        {`${currPlanet.name}, ${currPlanet.population}`}
+                        {`${currPlanet.name}, ${populationInMillions + " M"}`}
                       </Typography>
                     ) : (
                       <Typography
@@ -155,7 +161,8 @@ const PopularVehicleTable = ({ classes }: Props) => {
         isPilot={isPilot}
         details={details}
       />
-    </div>
+      {/* </div> */}
+    </Container>
   );
 };
 
