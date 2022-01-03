@@ -55,9 +55,7 @@ const PopularVehicleTable = ({ classes }: Props) => {
   };
 
   return (
-    // <div className={classes.tableContainer}>
     <Container maxWidth="md" className={classes.tableContainer}>
-      {/* <h3 className={classes.title}>Exercise 1</h3> */}
       {!popularVehicle ? (
         <>
           <CircularProgress />
@@ -161,7 +159,6 @@ const PopularVehicleTable = ({ classes }: Props) => {
         isPilot={isPilot}
         details={details}
       />
-      {/* </div> */}
     </Container>
   );
 };
