@@ -1,6 +1,11 @@
 import Axios from "axios";
 import { store } from "../store/store";
-import { setVehicles, setPlanets, setPilots } from "../store/actions";
+import {
+  setVehicles,
+  setPlanets,
+  setPilots,
+  setPlanet,
+} from "../store/actions";
 import { Vehicle, Pilot, Planet } from "../types/types";
 
 const BASE_URL = "https://swapi.dev/api/";
@@ -96,6 +101,7 @@ export const getPlanet = async (name: string) => {
     const baseUrl = "https://swapi.dev/api/planets/?search=";
     try {
       const { data } = await Axios.get(baseUrl + name);
+      store.dispatch(setPlanet(data.results[0]));
       return data.results[0];
     } catch (err) {
       console.log(`Error while getting planet by name: ${name}`);

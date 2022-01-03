@@ -1,5 +1,3 @@
-import { createTheme } from "@material-ui/core/styles";
-
 export const colors = {
   primary: "#F6EBB3",
 };
@@ -11,5 +9,3 @@ export const container = {
     maxWidth: "95vw",
   },
 };
-
-export const theme = createTheme({});
